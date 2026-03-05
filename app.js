@@ -1,17 +1,10 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const auth = require('./src/routes/auth.routes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(port, (err) => {
-    if (err) {
-        return console.log('Something bad happened', err);
-    }
-    console.log(`Server is listening on ${port}`);
-});
-
-
+app.use('/api',auth);
 
 module.exports = app;
